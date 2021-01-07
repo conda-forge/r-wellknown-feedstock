@@ -1,4 +1,4 @@
-{% set version = '0.7.0' %}
+{% set version = "0.7.2" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,10 +10,10 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/wellknown_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/wellknown/wellknown_{{ version }}.tar.gz
-  sha256: f54ab43c14fbf4104e54bf55cda912f7614ac3567b034e38b466ca70732d28f8
+  sha256: 2c26a91ec81b7b88460749b7cb4d803fae3582c90d636dc680317aab902be38f
 
 build:
-  merge_build_host: True  # [win]
+  merge_build_host: true  # [win]
   number: 0
   rpaths:
     - lib/R/lib/
@@ -52,9 +52,7 @@ test:
 about:
   home: https://docs.ropensci.org/wellknown/, https://github.com/ropensci/wellknown
   license: MIT
-  summary: Convert 'WKT' to 'GeoJSON' and 'GeoJSON' to 'WKT'. Functions included for converting
-    between 'GeoJSON' to 'WKT', creating both 'GeoJSON' features, and non-features,
-    creating 'WKT' from R objects (e.g., lists, data.frames, vectors), and linting 'WKT'.
+  summary: Convert 'WKT' to 'GeoJSON' and 'GeoJSON' to 'WKT'. Functions included for converting between 'GeoJSON' to 'WKT', creating both 'GeoJSON' features, and non-features, creating 'WKT' from R objects (e.g., lists, data.frames, vectors), and linting 'WKT'.
   license_family: MIT
   license_file:
     - {{ environ["PREFIX"] }}/lib/R/share/licenses/MIT
