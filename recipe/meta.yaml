@@ -1,6 +1,5 @@
 {% set version = "0.7.4" %}
 {% set posix = 'm2-' if win else '' %}
-{% set native = 'm2w64-' if win else '' %}
 
 package:
   name: r-wellknown
@@ -13,8 +12,7 @@ source:
   sha256: 483e6fc43edf09ed583e74ce5ca7e2d7838ef8a32291e06d774c37546eed1a34
 
 build:
-  merge_build_host: true  # [win]
-  number: 2
+  number: 3
   skip: true  # [win and r_base == "3.6"]
   rpaths:
     - lib/R/lib/
@@ -23,7 +21,9 @@ build:
 requirements:
   build:
     - {{ compiler('c') }}              # [not win]
+    - {{ stdlib("c") }}                # [not win]
     - {{ compiler('m2w64_c') }}        # [win]
+    - {{ stdlib("m2w64_c") }}          # [win]
     - {{ compiler('cxx') }}            # [not win]
     - {{ compiler('m2w64_cxx') }}      # [win]
     - {{ posix }}filesystem        # [win]
@@ -39,7 +39,6 @@ requirements:
     - r-wk
   run:
     - r-base
-    - {{ native }}gcc-libs         # [win]
     #- r-bh
     - r-rcpp
     - r-jsonlite
